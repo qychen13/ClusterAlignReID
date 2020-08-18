@@ -1,0 +1,4 @@
+# stage 1
+python trainval.py -b 64 -nw 4 -vb 256 -gs 0 -ds 'dukemtm' -ddir /media/DatasetSSD/DukeMTMC-reID -model 'external-bnneck' -vs 'train-all_duke-large-input_warm-up-v1_adam_triplet_label-smooth_erasing_test-bnneck-flips' -lr 3.5e-4 -logf 100 -cptf 10 -me 120 -lcd strong-baseline-duke-bnneck-stage1
+# stage 2
+python trainval.py -b 64 -nw 4 -vb 256 -gs 0 -ds 'dukemtm' -ddir /media/DatasetSSD/DukeMTMC-reID -model 'external-bnneck-v1' -vs 'train-all_duke-large-input_const-lr_new-optim_adam_id_erasing_test-bnneck-flips' -lr 3.5e-6 -logf 100 -cptf 10 -me 160 -lcd strong-baseline-duke-bnneck-stage2 -rf checkpoints/strong-baseline-duke-bnneck-stage1/e119t27118.pth.tar -re 119 -ri 27118
